@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace NeuralNetwork.NeuralNetworkComponents
 {
-    class Neuron
+    public class Neuron
     {
-        List<Neuron> inputNeurons { get; set; }
-        double weight { get; set; }
+        public List<Neuron> inputNeurons { get; set; }
+        public double weight { get; set; }
 
-        double sigmoidFunction(double weights) => 1 / 1 + Math.Pow(Math.E, -weights);
+        public double sigmoidFunction(double weights) => (double)1 / (1 + Math.Pow(Math.E, -weights));
 
-        void CalculateAndSetWeight()
+        public void CalculateAndSetWeight()
         {
             double sum = 0;
 

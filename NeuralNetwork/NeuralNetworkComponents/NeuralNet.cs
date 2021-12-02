@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NeuralNetwork.NeuralNetworkComponents
 {
-    class NeuralNet
+    public class NeuralNet
     {
         public NeuralNet()
         {
@@ -16,7 +16,7 @@ namespace NeuralNetwork.NeuralNetworkComponents
         List<HiddenLayer> hiddenLayers { get; set; }
         List<Neuron> outputLayer { get; set; }
 
-        public void ConfigureNeuralNetwork(List<double> inputWeights, )
+        public void ConfigureNeuralNetwork(List<double> inputWeights)
         {
 
         }

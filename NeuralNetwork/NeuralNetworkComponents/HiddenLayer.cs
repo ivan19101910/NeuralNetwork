@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NeuralNetwork.NeuralNetworkComponents
 {
-    class HiddenLayer
+    public class HiddenLayer
     {
         List<Neuron> neurons;
     }
