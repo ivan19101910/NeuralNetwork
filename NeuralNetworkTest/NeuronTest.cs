@@ -13,20 +13,31 @@ namespace NeuralNetworkTest
         }
         NeuralNet network;
         [Test]
-        public void Test1()
+        public void TestActivationFunction()
+        {
+            //var neuronList = new List<Neuron>();
+            //neuronList.Add(new Neuron { Weight = 1 });
+            //neuronList.Add(new Neuron { Weight = 2 });
+            //neuronList.Add(new Neuron { Weight = 3 });
+
+            var neuron = new Neuron { Weight = 5};
+
+            var result = neuron.SigmoidFunction(1 + 2 + 0.5);
+
+            Assert.GreaterOrEqual(result, 0);
+            Assert.LessOrEqual(result, 1);
+
+        }
+        [Test]
+        public void TestBoundedNeuronCreate()
         {
             var neuronList = new List<Neuron>();
-            neuronList.Add(new Neuron { weight = 1 });
-            neuronList.Add(new Neuron { weight = 2 });
-            neuronList.Add(new Neuron { weight = 3 });
+            neuronList.Add(new Neuron { Weight = 1 });
 
-            var neuron = new Neuron { weight = 5, inputNeurons = neuronList};
-
-            neuron.CalculateAndSetWeight();
-
-            Assert.GreaterOrEqual(neuron.weight, 0);
-            Assert.LessOrEqual(neuron.weight, 1);
-
+            var NeuronWithBoundedNeurons = new Neuron(neuronList, 2);
+            Assert.AreSame(neuronList[0], NeuronWithBoundedNeurons.InputNeurons[0]);
+            NeuronWithBoundedNeurons.InputNeurons[0].Weight = 1;
+            Assert.AreEqual(1, neuronList[0].Weight);
         }
     }
 }
