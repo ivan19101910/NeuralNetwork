@@ -18,9 +18,18 @@ namespace NeuralNetwork.NeuralNetworkComponents
             InputNeurons = inputNeurons;
             Weight = weight;
         }
+        public Neuron(List<Neuron> inputNeurons)
+        {
+            InputNeurons = inputNeurons;
+        }
         public Neuron()
         {
 
+        }
+
+        public Neuron(double weight)
+        {
+            Weight = weight;
         }
 
         //public void CalculateAndSetWeight()

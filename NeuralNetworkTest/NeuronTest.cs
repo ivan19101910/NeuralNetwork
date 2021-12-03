@@ -39,5 +39,12 @@ namespace NeuralNetworkTest
             NeuronWithBoundedNeurons.InputNeurons[0].Weight = 1;
             Assert.AreEqual(1, neuronList[0].Weight);
         }
+
+        [Test]
+        public void TestNeuralNetCreation()
+        {
+            var net = new NeuralNet(3, 2, 4, 5, 6);
+            net.ConfigureNeuralNetwork(new List<double> { 0.5, 0.6, 0.7, 0.8, 0.9});
+        }
     }
 }
