@@ -12,6 +12,7 @@ namespace NeuralNetwork.NeuralNetworkComponents
         public double Weight { get; set; }
 
         public double SigmoidFunction(double weightsSum) => 1 / (1 + Math.Pow(Math.E, -weightsSum));
+        public double OutputSignal { get; set; }
 
         public Neuron(List<Neuron> inputNeurons, double weight)
         {
@@ -51,8 +52,8 @@ namespace NeuralNetwork.NeuralNetworkComponents
             {
                 sum += inputs[i] * InputNeurons[i].Weight;
             }
-
-            return SigmoidFunction(sum);
+            OutputSignal = SigmoidFunction(sum);
+            return OutputSignal;
         }
     }
 }

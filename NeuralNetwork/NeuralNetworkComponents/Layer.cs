@@ -14,6 +14,17 @@ namespace NeuralNetwork.NeuralNetworkComponents
         {
             Neurons = neurons;
         }
+
+        public List<double> GetAllSignals()
+        {
+            var signals = new List<double>();
+            for(int i = 0; i < Neurons.Count; ++i)
+            {
+                signals.Add(Neurons[i].OutputSignal);
+            }
+
+            return signals;
+        }
         public Layer()
         {
 

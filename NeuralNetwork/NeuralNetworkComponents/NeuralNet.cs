@@ -33,10 +33,33 @@ namespace NeuralNetwork.NeuralNetworkComponents
 
         public List<int> HiddenLayersCount { get; }
 
-        public double FeedForward(List<double> inputs)
+        public List<double> FeedForward(List<double> inputs)
         {
+            //feeding signals to input layer
+            for(int i = 0; i < inputs.Count; ++i)
+            {
+                var signal = new List<double>() { inputs[i] };
+                var neuron = Layers[0].Neurons[i];
 
+                neuron.FeedForward(signal);
+            }
+
+
+            //feeding to next layers
+            
+            for(int i = 1; i < Layers.Count; ++i)
+            {
+                var prevLayerSignals = Layers[i - 1].GetAllSignals();
+
+                foreach(Neuron neuron in Layers[i].Neurons)
+                {
+                    neuron.FeedForward(prevLayerSignals);
+                }
+            }
+
+            return Layers[Layers.Count].GetAllSignals();//TODO return max value?
         }
+
 
         public void ConfigureNeuralNetwork(List<double> inputWeights)
         {
