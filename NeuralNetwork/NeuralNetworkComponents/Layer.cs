@@ -25,6 +25,8 @@ namespace NeuralNetwork.NeuralNetworkComponents
 
             return signals;
         }
+
+        
         public Layer()
         {
 
