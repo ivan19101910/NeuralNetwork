@@ -20,7 +20,7 @@ namespace NeuralNetworkTest
             //neuronList.Add(new Neuron { Weight = 2 });
             //neuronList.Add(new Neuron { Weight = 3 });
 
-            var neuron = new Neuron {};
+            var neuron = new Neuron { };
 
             var result = neuron.SigmoidFunction(1 + 2 + 0.5);
 
@@ -36,7 +36,7 @@ namespace NeuralNetworkTest
             net.ConfigureNeuralNetwork();
         }
         [Test]
-        public void SimpleNeuralNetworkTest() 
+        public void SimpleNeuralNetworkTest()
         {
             var net = new NeuralNet(3, 3, 3);
             net.ConfigureNeuralNetwork();
@@ -63,6 +63,40 @@ namespace NeuralNetworkTest
             //}
             var f = 5;
 
+        }
+        [Test]
+        public void NetworkWorkTest()
+        {
+            var net = new NeuralNet(2, 1, 3, 2);
+            net.ConfigureNeuralNetwork();
+            net.SetWeights();
+            net.FeedForward(new List<double> { 1, 0.5 });//feeding work properly
+        }
+
+        [Test]
+        public void NetworkRandomSetWeightsTest()
+        {
+            var net = new NeuralNet(2, 1, 3, 2);
+            net.ConfigureNeuralNetwork();
+            net.SetRandomWeights();
+            //net.FeedForward(new List<double> { 1, 0.5 });//feeding work properly
+        }
+
+        [Test]
+        public void LearningTest()
+        {
+            var net = new NeuralNet(2, 1, 3, 2);
+            net.ConfigureNeuralNetwork();
+            net.LearnNetwork(0.01, new List<List<double>>
+            {
+                new List<double> { 1, 1, 1 },
+                new List<double> { 0, 0, 0 },
+                new List<double> { 0.5, 0.5, 0.75 },
+                new List<double> { 0.25, 0.25, 0.4 },
+                new List<double> { 1, 0, 0.8 },
+                new List<double> { 0, 1, 0 },
+                new List<double> { 0.3, 1, 0.45 }
+            });
         }
     }
 }
